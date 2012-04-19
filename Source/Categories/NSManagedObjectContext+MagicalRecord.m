@@ -293,6 +293,7 @@ static void const * kMagicalRecordNotifiesMainContextAssociatedValueKey = @"kMag
                          context = [[NSManagedObjectContext alloc] init];
                          [context setPersistentStoreCoordinator:coordinator];
                                  )
+        else
         PRIVATE_QUEUES_ENABLED(
             MRLog(@"Creating context in Context Private Queue Mode");
             context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
