@@ -327,8 +327,9 @@ static void const * kMagicalRecordNotifiesMainContextAssociatedValueKey = @"kMag
          MRLog(@"Creating Context - Using Thread Isolation Mode");
          context = [self MR_context];
          context.MR_notifiesMainContextOnSave = YES;
+         MR_RETAIN(context)
     )
-    
+    else     
     PRIVATE_QUEUES_ENABLED
     (
         MRLog(@"Creating Context - Using Private queue mode");
@@ -339,6 +340,8 @@ static void const * kMagicalRecordNotifiesMainContextAssociatedValueKey = @"kMag
         }
     )
     
+    MR_AUTORELEASE(context)
+
     return context;
 }
 
